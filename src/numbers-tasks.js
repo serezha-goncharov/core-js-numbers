@@ -582,8 +582,20 @@ function getIntegerPartNumber(number) {
  * 1, 2, 3       => 6
  * 0.1, 0.2, 0.3 => 0.6
  */
-function getSumOfNumbers(/* x1, x2, x3 */) {
-  throw new Error('Not implemented');
+function getSumOfNumbers(x1, x2, x3) {
+  const array = [x1, x2, x3];
+  const maxLengthAfterDot = [];
+
+  for (let i = 0; i < array.length; i += 1) {
+    const currentNumber = array[i];
+    if (String(currentNumber).includes('.')) {
+      maxLengthAfterDot.push(String(currentNumber).split('.')[1].length);
+    }
+  }
+
+  const result = x1 + x2 + x3;
+  const n = maxLengthAfterDot.length ? Math.max(...maxLengthAfterDot) : 0;
+  return parseFloat(result.toFixed(n));
 }
 
 /**
